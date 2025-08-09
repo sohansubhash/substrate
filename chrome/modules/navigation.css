@@ -1,0 +1,31 @@
+/* ===== NAVIGATION BAR STYLING ===== */
+
+/* Add shadow under navigation bar (light theme) */
+:root #nav-bar {
+  box-shadow: 0 -1px 0 0 hsla(280,6%,0%,0.1), 0 -4px 4px -5px hsla(280,6%,0%,0.2);
+}
+
+/* Dark theme navigation bar shadow */
+@media (-moz-content-prefers-color-scheme: dark) {
+  :root #nav-bar {
+  box-shadow: 0 -1px 0 0 hsla(280,6%,0%,0.3), 0 -4px 4px -5px hsla(280,6%,0%,0.05) !important;
+  }
+}
+
+/* Hide navigation bar overflow button */
+#nav-bar-overflow-button {
+  display: none !important; 
+}
+
+/* ===== TOOLBAR BUTTON HOVER EFFECTS ===== */
+
+/* Define custom hover and active backgrounds for toolbar buttons */
+:root {
+   --toolbarbutton-hover-background: color-mix(in srgb, currentColor 11%, transparent) !important;
+   --toolbarbutton-active-background: color-mix(in srgb, currentColor 21%, transparent) !important;
+}
+
+/* Offset navigator toolbox to compensate for tab container padding */
+#navigator-toolbox {
+  margin-bottom: -6px !important;
+}

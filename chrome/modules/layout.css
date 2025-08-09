@@ -1,0 +1,27 @@
+/* ===== BROWSER CONTENT MARGINS (SIDEBAR LOGIC) ===== */
+
+/* Default styling with margins on all sides */
+#tabbrowser-tabpanels browser[type] {
+  margin: 0 8px 8px 8px !important;  /* top right bottom left */
+  border-radius: 8px !important;
+}
+
+/* When sidebar is expanded, remove left margin */
+#tabbrowser-tabbox[sidebar-launcher-expanded] #tabbrowser-tabpanels browser[type] {
+  margin: 0 8px 8px 0 !important;  /* top right bottom left - no left margin */
+}
+
+/* ===== BROWSER CONTENT BORDER & SHADOW ===== */
+
+/* Remove default content area shadow and chrome separator */
+#browser {
+  --content-area-shadow: none !important;
+  --chrome-content-separator-color: none !important;
+}
+
+/* ===== TAB CONTAINER ALIGNMENT ===== */
+
+/* Add top padding to align tabs with vertical sidebar */
+#tabbrowser-tabbox {
+  padding-top: 7px !important;
+}

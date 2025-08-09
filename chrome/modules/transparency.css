@@ -1,0 +1,28 @@
+/* ===== WINDOW TRANSPARENCY & APPEARANCE ===== */
+:root#main-window {
+   background-color: transparent !important;
+}
+
+:root {
+      appearance: -moz-sidebar !important;
+}
+
+:root:not(:-moz-window-inactive) #navigator-toolbox {
+  background-color: transparent !important; 
+}
+
+:root #TabsToolbar,
+:root #titlebar,
+:root #tabbrowser-tabs {
+   -moz-default-appearance: -moz-window-titlebar !important;
+   appearance: -moz-window-titlebar !important;
+   background-color: transparent !important;
+}
+
+:root:-moz-window-inactive .tab-content {
+  opacity: 0.6;
+}
+
+:root { 
+  --tabpanel-background-color: #00000000 !important; 
+}

@@ -1,0 +1,33 @@
+---
+import { Image } from "astro:assets";
+import GridLayout from "../components/GridLayout.astro";
+import GridRow from "../components/GridRow.astro";
+import FooterRow from "../components/FooterRow.astro";
+
+// Import images from src/images/
+import karePlant from "../images/kare-plant.svg";
+import screenshot from "../images/screenshot.png";
+---
+
+<GridLayout title="Substrate">
+    <!-- Row 1: Title and Logo -->
+    <GridRow>
+        <div class="ht">
+            <h1>Substrate</h1>
+            <Image src={karePlant} alt="plant" width="96" height="96" />
+        </div>
+    </GridRow>
+
+    <!-- Row 2: Description -->
+    <GridRow>
+        <p>A minimal theme for Firefox</p>
+    </GridRow>
+
+    <!-- Row 3: Screenshot -->
+    <GridRow>
+        <Image src={screenshot} alt="firefox" width="700" height="700" />
+    </GridRow>
+
+    <!-- Footer Row -->
+    <FooterRow />
+</GridLayout>

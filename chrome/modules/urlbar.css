@@ -1,0 +1,21 @@
+/* ===== URL BAR STYLING ===== */
+
+/* Make URL bar transparent with blur effect */
+#urlbar-background {
+  --toolbar-field-background-color: transparent !important;
+  background-color: #00000000 !important;
+  backdrop-filter: blur(6px) !important;
+}
+
+/* ===== URL BAR SEARCH MODE STYLING ===== */
+
+/* Remove padding and background from URL bar search mode switcher */
+#urlbar-searchmode-switcher {
+    padding-right: 0 !important;
+    background-color: transparent !important;
+}
+
+/* Hide all elements inside search mode switcher */
+#urlbar-searchmode-switcher > * {
+    display: none;
+}

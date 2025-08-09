@@ -1,0 +1,23 @@
+/* ===== HIDE VARIOUS UI ELEMENTS ===== */
+
+/* Hide tracking protection, identity box, PiP button, reader mode, menu button, and bookmark star */
+#tracking-protection-icon-container,
+#identity-box,
+#picture-in-picture-button,
+#reader-mode-button,
+#PanelUI-button,
+#star-button-box {
+  display: none !important;
+}
+
+/* Hide permission icon container */
+#permission-icon-container {
+    display: none !important;
+}
+
+/* ===== EXTENSION PAGE STYLING ===== */
+
+/* Hide extension icon labels on extension pages */
+#identity-box.extensionPage #identity-icon-label { 
+  display: none !important; 
+}

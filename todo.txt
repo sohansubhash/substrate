@@ -1,0 +1,11 @@
+sidebar
+- flip this logic for right side bar
+
+tabs - change close button to show when hover
+
+create horizontal tabs version
+
+done
+--
+margin stuff
+- change left margin to 0 when sidebar is active

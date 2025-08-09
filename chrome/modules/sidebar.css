@@ -1,0 +1,16 @@
+/* ===== SIDEBAR BUTTON STYLING ===== */
+
+
+/* ===== SIDEBAR-SPECIFIC HIDING ===== */
+
+/* Hide Bitwarden button in new sidebar */
+/*@media -moz-pref("sidebar.revamp") {
+  button[title="Bitwarden"] {
+    display: none;
+  }
+}*/
+
+/* Hide tools and extensions list in sidebar */
+.tools-and-extensions.actions-list {
+    display: none !important;
+}

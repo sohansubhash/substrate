@@ -1,0 +1,13 @@
+https://github.com/zen-browser/desktop/pull/927
+inexperience with security
+https://docs.zen-browser.app/faq#why-cant-zen-browser-play-drm-protected-content
+no widevine support
+https://docs.zen-browser.app/guides/1password
+not a trusted browser for password managers
+ridiculous complexity and difficult to build
+https://docs.zen-browser.app/contribute/desktop/building
+zen is downstream of firefox - you are trusting developers to forward critical patches by default.
+they've already had open backdoor incident
+https://archive.is/gtqyt#zen-browser
+they've added more telemetry
+https://news.ycombinator.com/item?id=44951799

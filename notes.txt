@@ -1,0 +1,27 @@
+/*
+about:config props to set to true
+toolkit.legacyUserProfileCustomizations.stylesheets
+svg.context-properties.content.enabled
+layout.css.color-mix.enabled
+browser.theme.native-theme
+sidebar.revamp.round-content-area
+browser.tabs.allow_transparent_browser
+*/
+/*https://www.reddit.com/r/FirefoxCSS/comments/1d8scec/how_to_find_out_any_classes_or_ids_of_browser/  */
+
+/* https://www.reddit.com/r/FirefoxCSS/comments/1cv8xi2/how_to_hide_extension_icons_and_buttons_in/ */
+
+https://github.com/MohamedxSalah/MicaBlur-Firefox/tree/main
+
+---
+https://github.com/KiKaraage/ArcWTF
+https://github.com/MrOtherGuy/firefox-csshacks
+
+https://news.ycombinator.com/item?id=45073746
+[1] - https://github.com/arkenfox/user.js
+[2] - https://github.com/yokoffing/Betterfox
+[3a] - https://addons.mozilla.org/en-US/firefox/addon/css-exfil-pro...
+[3b] - https://www.mike-gualtieri.com/css-exfil-vulnerability-teste...
+https://librewolf.net/
+https://codeberg.org/librewolf/settings/src/branch/master/li...
+https://ffprofile.com
