@@ -123,5 +123,15 @@ display: none !important; } ```
     display: none !important;
 }
 
+#tabbrowser-tabpanels browser[type] {
+  margin: 0 8px 8px 8px !important;  /* top right bottom left */
+  border-radius: 8px !important;
+}
+
+/* browser content Border & Shadow */
+#browser {
+  --content-area-shadow: none !important;
+  --chrome-content-separator-color: none !important;
+}
 
 /* https://www.reddit.com/r/FirefoxCSS/comments/1cv8xi2/how_to_hide_extension_icons_and_buttons_in/ */
