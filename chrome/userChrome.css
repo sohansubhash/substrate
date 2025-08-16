@@ -1,27 +1,21 @@
-/*
-about:config props to set to true
-toolkit.legacyUserProfileCustomizations.stylesheets
-svg.context-properties.content.enabled
-layout.css.color-mix.enabled
-browser.theme.native-theme
-sidebar.revamp.round-content-area
-browser.tabs.allow_transparent_browser
-*/
-/*https://www.reddit.com/r/FirefoxCSS/comments/1d8scec/how_to_find_out_any_classes_or_ids_of_browser/  */
- :root#main-window {
+/* ===== WINDOW TRANSPARENCY & APPEARANCE ===== */
+
+/* Make main window background transparent */
+:root#main-window {
    background-color: transparent !important;
 }
 
-/* Basic Transparency */
+/* Apply sidebar appearance to root element */
 :root {
       appearance: -moz-sidebar !important;
-  }
 }
 
+/* Make navigator toolbox transparent when window is active */
 :root:not(:-moz-window-inactive) #navigator-toolbox {
   background-color: transparent !important; 
 }
 
+/* Apply window titlebar appearance to tabs toolbar, titlebar, and tab container */
 :root #TabsToolbar,
 :root #titlebar,
 :root #tabbrowser-tabs {
@@ -30,65 +24,129 @@ browser.tabs.allow_transparent_browser
    background-color: transparent !important;
 }
 
+/* Reduce opacity of tab content when window is inactive */
 :root:-moz-window-inactive .tab-content {
   opacity: 0.6;
 }
 
+/* ===== TOOLBAR BUTTON HOVER EFFECTS ===== */
+
+/* Define custom hover and active backgrounds for toolbar buttons */
 :root {
    --toolbarbutton-hover-background: color-mix(in srgb, currentColor 11%, transparent) !important;
    --toolbarbutton-active-background: color-mix(in srgb, currentColor 21%, transparent) !important;
 }
 
+/* ===== TAB STYLING & SHADOWS ===== */
+
+/* Remove borders from selected tabs */
 .tab-background:is([selected], [multiselected]):-moz-lwtheme {
-   border:  none !important;
+   border: none !important;
 }
+
+/* Add shadow to selected tabs (light theme) */
 #tabbrowser-tabs:not([noshadowfortests]) .tab-background:is([selected], [multiselected]) {
    box-shadow: 0 0 0 var(--tabs-navbar-shadow-size) rgba(0,0,0,.1), 0 1px 5px rgba(0,0,0,.1) !important;
 }
+
+/* Lighter shadow when window is inactive (light theme) */
 :root:-moz-window-inactive #tabbrowser-tabs:not([noshadowfortests]) .tab-background:is([selected], [multiselected]) {
    box-shadow: 0 0 0 var(--tabs-navbar-shadow-size) rgba(0,0,0,.05) !important;
 }
 
+/* Dark theme tab shadows */
 @media (-moz-content-prefers-color-scheme: dark) {
   :root #tabbrowser-tabs:not([noshadowfortests]) .tab-background:is([selected], [multiselected]) {
-	 box-shadow: 0 0 0 var(--tabs-navbar-shadow-size) hsla(280,6%,60%,0.5) inset, 0 0 0 var(--tabs-navbar-shadow-size) rgba(0,0,0,.6), 0 1px 5px rgba(0,0,0,.1) !important;
+   box-shadow: 0 0 0 var(--tabs-navbar-shadow-size) hsla(280,6%,60%,0.5) inset, 0 0 0 var(--tabs-navbar-shadow-size) rgba(0,0,0,.6), 0 1px 5px rgba(0,0,0,.1) !important;
   }
+  
+  /* Dark theme inactive window shadow */
   :root:-moz-window-inactive #tabbrowser-tabs:not([noshadowfortests]) .tab-background:is([selected], [multiselected]) {
-	 box-shadow: 0 0 0 var(--tabs-navbar-shadow-size) rgba(0,0,0,.4) !important;
+   box-shadow: 0 0 0 var(--tabs-navbar-shadow-size) rgba(0,0,0,.4) !important;
   }
 }
 
+/* ===== NAVIGATION BAR STYLING ===== */
+
+/* Add shadow under navigation bar (light theme) */
 :root #nav-bar {
   box-shadow: 0 -1px 0 0 hsla(280,6%,0%,0.1), 0 -4px 4px -5px hsla(280,6%,0%,0.2);
 }
 
+/* Dark theme navigation bar shadow */
 @media (-moz-content-prefers-color-scheme: dark) {
   :root #nav-bar {
-	box-shadow: 0 -1px 0 0 hsla(280,6%,0%,0.3), 0 -4px 4px -5px hsla(280,6%,0%,0.05) !important;
+  box-shadow: 0 -1px 0 0 hsla(280,6%,0%,0.3), 0 -4px 4px -5px hsla(280,6%,0%,0.05) !important;
   }
 }
 
-.tab-close-button{ display: none !important }
+/* ===== TAB CLOSE BUTTON BEHAVIOR ===== */
 
-#identity-box.extensionPage #identity-icon-label { display: none !important; }
+/* Hide close button by default, show on tab hover - Method 1: Visibility */
+/* Hide close button by default, show on tab hover with smooth animation */
+.tab-close-button.close-icon {
+  opacity: 0 !important;
+  transition: opacity 0.3s ease !important;
+}
+
+.tabbrowser-tab:hover .tab-close-button.close-icon {
+  opacity: 1 !important;
+}
+
+/* ===== SIDEBAR BUTTON STYLING ===== */
+
+/* Remove ALL styling from sidebar button when sidebar is open */
+#sidebar-button[checked="true"],
+#sidebar-button[expanded] {
+  background-color: transparent !important;
+  box-shadow: none !important;
+}
+
+/* Remove hover effects when sidebar is open */
+#sidebar-button[checked="true"]:hover,
+#sidebar-button[expanded]:hover {
+  background-color: transparent !important;
+}
+
+/* Remove active/pressed effects when sidebar is open */
+#sidebar-button[checked="true"]:active,
+#sidebar-button[expanded]:active {
+  background-color: transparent !important;
+}
 
 
-/*turns new tab page transparent*/
-:root { --tabpanel-background-color: #00000000 !important; }
+/* ===== EXTENSION PAGE STYLING ===== */
+
+/* Hide extension icon labels on extension pages */
+#identity-box.extensionPage #identity-icon-label { 
+  display: none !important; 
+}
+
+/* ===== NEW TAB PAGE TRANSPARENCY ===== */
+
+/* Make new tab page background transparent */
+:root { 
+  --tabpanel-background-color: #00000000 !important; 
+}
+
+/* Alternative transparency settings (commented out) */
 /* :root {
   --in-content-page-background: #00000000 !important;
   --in-content-box-background: #00000088 !important;
 } */
 
+/* ===== URL BAR STYLING ===== */
+
+/* Make URL bar transparent with blur effect */
 #urlbar-background {
-  --toolbar-field-background-color:  transparent !important;
+  --toolbar-field-background-color: transparent !important;
   background-color: #00000000 !important;
   backdrop-filter: blur(6px) !important;
 }
 
+/* ===== HIDE VARIOUS UI ELEMENTS ===== */
 
-
-/* #alltabs-button, */
+/* Hide tracking protection, identity box, PiP button, reader mode, menu button, and bookmark star */
 #tracking-protection-icon-container,
 #identity-box,
 #picture-in-picture-button,
@@ -98,40 +156,70 @@ browser.tabs.allow_transparent_browser
   display: none !important;
 }
 
+/* Hide permission icon container */
 #permission-icon-container {
     display: none !important;
 }
 
+/* Hide new tab icon on New Tab tabs */
 .tabbrowser-tab[label="New Tab"] .tab-icon-image {
   display: none !important;
 }
+
+/* Hide new tab buttons in vertical tabs */
 #tabbrowser-tabs[orient="vertical"] :is(#tabs-newtab-button, #vertical-tabs-newtab-button) {
   display: none;
 }
+
+/* Hide navigation bar overflow button */
 #nav-bar-overflow-button {
-display: none !important; } ```
+  display: none !important; 
+}
 
+/* ===== SIDEBAR-SPECIFIC HIDING ===== */
 
-
-@media -moz-pref("sidebar.revamp") {
+/* Hide Bitwarden button in new sidebar */
+/*@media -moz-pref("sidebar.revamp") {
   button[title="Bitwarden"] {
     display: none;
   }
 }
-
+*/
+/* Hide tools and extensions list in sidebar */
 .tools-and-extensions.actions-list {
     display: none !important;
 }
 
+/* ===== BROWSER CONTENT MARGINS (SIDEBAR LOGIC) ===== */
+
+/* Default styling with margins on all sides */
 #tabbrowser-tabpanels browser[type] {
   margin: 0 8px 8px 8px !important;  /* top right bottom left */
   border-radius: 8px !important;
 }
 
-/* browser content Border & Shadow */
+/* When sidebar is expanded, remove left margin */
+#tabbrowser-tabbox[sidebar-launcher-expanded] #tabbrowser-tabpanels browser[type] {
+  margin: 0 8px 8px 0 !important;  /* top right bottom left - no left margin */
+}
+
+/* ===== URL BAR SEARCH MODE STYLING ===== */
+
+/* Remove padding and background from URL bar search mode switcher */
+#urlbar-searchmode-switcher {
+    padding-right: 0 !important;
+    background-color: transparent !important;
+}
+
+/* Hide all elements inside search mode switcher */
+#urlbar-searchmode-switcher > * {
+    display: none;
+}
+
+/* ===== BROWSER CONTENT BORDER & SHADOW ===== */
+
+/* Remove default content area shadow and chrome separator */
 #browser {
   --content-area-shadow: none !important;
   --chrome-content-separator-color: none !important;
 }
-
-/* https://www.reddit.com/r/FirefoxCSS/comments/1cv8xi2/how_to_hide_extension_icons_and_buttons_in/ */

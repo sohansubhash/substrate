@@ -8,6 +8,7 @@ set -e
 GREEN='\033[0;32m'
 RED='\033[0;31m'
 YELLOW='\033[1;33m'
+BLUE='\033[0;34m'
 NC='\033[0m'
 
 # Script directory
@@ -24,6 +25,9 @@ if [[ ! -f "$CONFIG_FILE" ]]; then
 # Example for macOS: FIREFOX_PROFILE_PATH="/Users/username/Library/Application Support/Firefox/Profiles/xxxxxxxx.default-release"
 # Example for Linux: FIREFOX_PROFILE_PATH="/home/username/.mozilla/firefox/xxxxxxxx.default-release"
 FIREFOX_PROFILE_PATH=""
+
+# Auto restart Firefox after sync (true/false)
+AUTO_RESTART_FIREFOX=true
 EOF
     echo -e "${RED}Please edit .env file and set your FIREFOX_PROFILE_PATH${NC}"
     exit 1
@@ -71,5 +75,49 @@ if [[ -f "${SCRIPT_DIR}/chrome/userContent.css" ]]; then
 fi
 
 echo -e "${GREEN}Theme sync complete!${NC}"
-echo -e "${YELLOW}Note: Restart Firefox to see changes${NC}"
 
+# Function to restart Firefox using AppleScript
+restart_firefox() {
+    echo -e "${BLUE}Restarting Firefox...${NC}"
+    
+    # Check if Firefox is running and quit it
+    osascript -e '
+        tell application "System Events"
+            if (name of processes) contains "Firefox" then
+                tell application "Firefox" to quit
+                -- Wait for Firefox to fully quit
+                repeat while (name of processes) contains "Firefox"
+                    delay 0.5
+                end repeat
+                delay 1
+            end if
+        end tell
+    ' 2>/dev/null || true
+    
+    # Start Firefox
+    osascript -e '
+        tell application "Firefox"
+            activate
+        end tell
+    ' 2>/dev/null || {
+        echo -e "${RED}Failed to restart Firefox via AppleScript${NC}"
+        echo -e "${YELLOW}Please restart Firefox manually to see changes${NC}"
+        return 1
+    }
+    
+    echo -e "${GREEN}✓ Firefox restarted successfully${NC}"
+}
+
+# Handle Firefox restart
+if [[ "$AUTO_RESTART_FIREFOX" == "true" ]]; then
+    restart_firefox
+else
+    # Ask user if they want to restart Firefox
+    echo -e "${YELLOW}Restart Firefox now to see changes? [y/N]${NC}"
+    read -r response
+    if [[ "$response" =~ ^[Yy]$ ]]; then
+        restart_firefox
+    else
+        echo -e "${YELLOW}Remember to restart Firefox to see changes${NC}"
+    fi
+fi
